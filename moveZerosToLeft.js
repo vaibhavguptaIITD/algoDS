@@ -1,25 +1,19 @@
 function moveZerosToLeft(arr){
-    var zeros = countZeroes(arr);
-    var newArr = [];
-    for(var i = 0; i < zeros; i++){
-        newArr[i] = 0;
-    }
-    for(var i = 0; i < arr.length; i++){
-        if(arr[i] !== 0){
-            newArr.push(arr[i]);
+    var read = arr.length - 1,
+    write = arr.length - 1;
+    while(read !== -1){
+        var item = arr[read];
+        if(item !== 0){
+            arr[write] = item;
+            write--;
         }
+        read--;
     }
-    return newArr;
+    while(write !== -1){
+        arr[write] = 0;
+        write--;
+    }
+    console.log(arr);
 }
 
-function countZeroes(arr){
-    var count = 0;
-    for(var i = 0; i < arr.length; i++){
-        if(arr[i] === 0){
-            count++;
-        }
-    }
-    return count;
-}
-
-console.log(moveZerosToLeft([1,10,20,0,59,63,0,88,0]));
+moveZerosToLeft([1, 10, 20, 0, 59, 63, 0, 88, 0]);
